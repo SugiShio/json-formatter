@@ -1,10 +1,36 @@
 <template lang="pug">
-el-container
-  el-main
-    el-row
-      el-col(:span='12')
-        el-input
-      el-col(:span='12')
-        el-input
-  el-footer
+section
+  el-input(
+  v-model='input'
+  placeholder='Input text here!'
+  )
+  div.hoge
+    | {{ formattedData }}
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      input: ''
+    }
+  },
+  computed: {
+    formattedData() {
+      if (!this.input) return
+      try {
+        const json = JSON.parse(this.input)
+        return JSON.stringify(json, null, 4)
+      } catch (e) {
+        return 'Invalid format'
+      }
+    }
+  }
+}
+</script>
+
+<style>
+.hoge {
+  white-space: pre-wrap;
+}
+</style>
