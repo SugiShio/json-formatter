@@ -13,7 +13,7 @@ section.j-container
             el-radio(label='tab') Tab
             el-radio(label='space') Space
         el-form-item(label='Number of space' v-if='indent === "space"')
-          el-input-number(v-model='space' controls-position='right' size='small')
+          el-input-number(v-model='space' controls-position='right' size='small' :min='0' :max='10')
   .j-container__col
     .j-display(:class='{ error: !isValid }')
       template(v-if='isValid') {{ formattedData }}
@@ -26,7 +26,6 @@ section.j-container
     :disabled='!input || !isValid'
     :icon='icon'
     ) Copy
-
 </template>
 
 <script>
