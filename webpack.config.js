@@ -21,7 +21,7 @@ module.exports = (env = {}) => {
     module: {
       rules: [
         {
-          test: /\.scss$/,
+          test: /\.(scss|css)$/,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
@@ -47,6 +47,19 @@ module.exports = (env = {}) => {
             {
               loader: 'sass-loader',
               options: { sourceMap: config.useSourceMap }
+            }
+          ]
+        },
+        {
+          test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/i,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                name: '[path][name].[ext]',
+                outputPath: '',
+                publicPath: '../'
+              }
             }
           ]
         },
