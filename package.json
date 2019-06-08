@@ -9,7 +9,11 @@
     "build": "webpack --env.NODE_ENV=production"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "autoprefixer": "^9.6.0",
+    "babel-loader": "^8.0.6",
     "css-loader": "^2.1.1",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
@@ -20,5 +24,8 @@
     "webpack-cli": "^3.3.3",
     "webpack-dev-server": "^3.7.1",
     "webpack-notifier": "^1.7.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
   }
 }

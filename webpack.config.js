@@ -51,6 +51,15 @@ module.exports = (env = {}) => {
               }
             }
           ]
+        },
+        {
+          test: /\.js/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader'
+            }
+          ]
         }
       ]
     },
@@ -60,6 +69,8 @@ module.exports = (env = {}) => {
       new WebpackNotifierPlugin()
     ],
     resolve: {
+      modules: [`${__dirname}/src`, 'node_modules'],
+      extensions: ['.js']
       // alias: {
       //   vue$: 'vue/dist/vue.common.js'
       // }
