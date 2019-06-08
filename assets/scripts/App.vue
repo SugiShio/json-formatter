@@ -6,15 +6,17 @@ section.j-container
     placeholder='Input text here!'
     )
   .j-container__col
-    .j-display
-      | {{ formattedData }}
+    .j-display(:class='{ error: !isValid }')
+      template(v-if='isValid') {{ formattedData }}
+      span(v-else) Invalid format
 </template>
 
 <script>
 export default {
   data() {
     return {
-      input: ''
+      input: '',
+      isValid: true
     }
   },
   computed: {
@@ -24,8 +26,13 @@ export default {
         const json = JSON.parse(this.input)
         return JSON.stringify(json, null, 4)
       } catch (e) {
-        return 'Invalid format'
+        return false
       }
+    }
+  },
+  watch: {
+    input(value) {
+      this.isValid = !value || !!this.formattedData
     }
   }
 }
