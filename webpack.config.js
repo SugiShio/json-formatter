@@ -1,5 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const WebpackNotifierPlugin = require('webpack-notifier')
 const path = require('path')
+
 module.exports = (env = {}) => {
   const config = {
     mode: env.NODE_ENV || 'development',
@@ -53,9 +55,9 @@ module.exports = (env = {}) => {
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({ filename: 'public/style.css' })
+      new MiniCssExtractPlugin({ filename: 'public/style.css' }),
       // new VueLoaderPlugin(),
-      // new WebpackNotifierPlugin()
+      new WebpackNotifierPlugin()
     ],
     resolve: {
       // alias: {
