@@ -1,6 +1,7 @@
 global.$ = require('jquery')
 import Vue from 'vue'
 import {
+  Button,
   Form,
   FormItem,
   Input,
@@ -11,6 +12,7 @@ import {
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 
+Vue.component(Button.name, Button)
 Vue.component(Form.name, Form)
 Vue.component(FormItem.name, FormItem)
 Vue.component(Input.name, Input)

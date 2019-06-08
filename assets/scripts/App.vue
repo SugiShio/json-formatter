@@ -18,6 +18,15 @@ section.j-container
     .j-display(:class='{ error: !isValid }')
       template(v-if='isValid') {{ formattedData }}
       span(v-else) Invalid format
+    textarea.j-display__hidden(ref='copyText') {{ formattedData }}
+    el-button.j-button.mt-20(
+    @click='copyData'
+    size='small'
+    type='primary'
+    :disabled='!input || !isValid'
+    :icon='icon'
+    ) Copy
+
 </template>
 
 <script>
@@ -27,7 +36,8 @@ export default {
       input: '',
       isValid: true,
       indent: 'tab',
-      space: 2
+      space: 2,
+      icon: 'el-icon-paperclip'
     }
   },
   computed: {
@@ -43,6 +53,17 @@ export default {
     indentation() {
       if (this.indent === 'tab') return '\t'
       return this.space
+    }
+  },
+  methods: {
+    copyData() {
+      if (!this.isValid) return
+      this.$refs.copyText.select()
+      document.execCommand('copy')
+      this.icon = 'el-icon-check'
+      setTimeout(() => {
+        this.icon = 'el-icon-paperclip'
+      }, 3000)
     }
   },
   watch: {
