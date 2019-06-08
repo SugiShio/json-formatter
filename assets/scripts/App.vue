@@ -2,8 +2,10 @@
 section.j-container
   .j-container__col
     el-input(
+    type='textarea'
     v-model='input'
     placeholder='Input text here!'
+    :rows='10'
     )
     .j-panel.mt-20
       h2.j-panel__title Options
@@ -14,6 +16,8 @@ section.j-container
             el-radio(label='space') Space
         el-form-item(label='Number of space' v-if='indent === "space"')
           el-input-number(v-model='space' controls-position='right' size='small' :min='0' :max='10')
+  .j-container__arrow
+    i.el-icon-caret-right
   .j-container__col
     .j-display
       pre(v-if='isValid')

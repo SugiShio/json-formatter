@@ -37,8 +37,21 @@
     flex-direction: column;
     flex-grow: 1;
     flex-shrink: 0;
-    width: 50%;
+    width: calc(50% - 15px);
     padding: 10px;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 30px;
+    text-align: center;
+
+    > i {
+      font-size: 32px;
+      color: $color-weak;
+    }
   }
 }
 
@@ -49,6 +62,7 @@
 }
 
 .j-panel {
+  flex-grow: 1;
   padding: 9px 15px;
   border: 1px solid #eee;
   border-radius: 4px;
