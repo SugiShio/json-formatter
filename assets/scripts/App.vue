@@ -1,11 +1,13 @@
 <template lang="pug">
-section
-  el-input(
-  v-model='input'
-  placeholder='Input text here!'
-  )
-  div.hoge
-    | {{ formattedData }}
+section.j-container
+  .j-container__col
+    el-input(
+    v-model='input'
+    placeholder='Input text here!'
+    )
+  .j-container__col
+    .j-display
+      | {{ formattedData }}
 </template>
 
 <script>
@@ -28,9 +30,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.hoge {
-  white-space: pre-wrap;
-}
-</style>
