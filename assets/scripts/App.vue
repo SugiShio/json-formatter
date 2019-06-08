@@ -15,10 +15,12 @@ section.j-container
         el-form-item(label='Number of space' v-if='indent === "space"')
           el-input-number(v-model='space' controls-position='right' size='small' :min='0' :max='10')
   .j-container__col
-    .j-display(:class='{ error: !isValid }')
-      template(v-if='isValid') {{ formattedData }}
-      span(v-else) Invalid format
-    textarea.j-display__hidden(ref='copyText') {{ formattedData }}
+    .j-display
+      pre(v-if='isValid')
+        code {{ formattedData }}
+      span.j-display__text(v-else-if='input === ""') Result here
+      span.j-display__error(v-else) Invalid format
+      textarea.j-display__hidden(ref='copyText') {{ formattedData }}
     el-button.j-button.mt-20(
     @click='copyData'
     size='small'
@@ -33,7 +35,6 @@ export default {
   data() {
     return {
       input: '',
-      isValid: true,
       indent: 'tab',
       space: 2,
       icon: 'el-icon-paperclip'
@@ -52,6 +53,9 @@ export default {
     indentation() {
       if (this.indent === 'tab') return '\t'
       return this.space
+    },
+    isValid() {
+      return this.input && !!this.formattedData
     }
   },
   methods: {
@@ -63,11 +67,6 @@ export default {
       setTimeout(() => {
         this.icon = 'el-icon-paperclip'
       }, 3000)
-    }
-  },
-  watch: {
-    input(value) {
-      this.isValid = !value || !!this.formattedData
     }
   }
 }
