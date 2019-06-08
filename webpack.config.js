@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const path = require('path')
 
@@ -9,7 +10,6 @@ module.exports = (env = {}) => {
   }
   return {
     mode: config.mode,
-    // context: path.join(__dirname, 'wp-content/themes'),
     entry: './assets/app.js',
     output: {
       filename: 'public/index.js',
@@ -46,18 +46,28 @@ module.exports = (env = {}) => {
             },
             {
               loader: 'sass-loader',
-              options: {
-                sourceMap: config.useSourceMap
-              }
+              options: { sourceMap: config.useSourceMap }
             }
           ]
         },
         {
           test: /\.js/,
           exclude: /node_modules/,
-          use: [
+          use: [{ loader: 'babel-loader' }]
+        },
+        {
+          test: /\.vue$/,
+          use: [{ loader: 'vue-loader' }]
+        },
+        {
+          test: /\.pug$/,
+          oneOf: [
             {
-              loader: 'babel-loader'
+              resourceQuery: /^\?vue/,
+              use: ['pug-plain-loader']
+            },
+            {
+              use: ['raw-loader', 'pug-plain-loader']
             }
           ]
         }
@@ -65,15 +75,15 @@ module.exports = (env = {}) => {
     },
     plugins: [
       new MiniCssExtractPlugin({ filename: 'public/style.css' }),
-      // new VueLoaderPlugin(),
+      new VueLoaderPlugin(),
       new WebpackNotifierPlugin()
     ],
     resolve: {
       modules: [`${__dirname}/src`, 'node_modules'],
-      extensions: ['.js']
-      // alias: {
-      //   vue$: 'vue/dist/vue.common.js'
-      // }
+      extensions: ['.js'],
+      alias: {
+        vue$: 'vue/dist/vue.common.js'
+      }
     }
   }
 }
