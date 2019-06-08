@@ -89,11 +89,12 @@
 
   &__text {
     font-size: $font-lg;
+    color: $color-weak;
   }
 
   &__error {
     font-size: $font-lg;
-    color: #ff5964;
+    color: $color-error;
   }
 }
 
