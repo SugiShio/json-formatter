@@ -46,6 +46,17 @@
   text-align: center;
 }
 
+.j-panel {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 9px 15px;
+
+  &__title {
+    margin: 5px 0 10px;
+    font-size: $font-lg;
+  }
+}
+
 .j-display {
   font-family: $font-monospace;
   height: 100%;
@@ -66,4 +77,8 @@
       font-size: 20px;
     }
   }
+}
+
+.mt-20 {
+  margin-top: 20px;
 }
