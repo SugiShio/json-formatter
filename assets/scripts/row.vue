@@ -4,7 +4,7 @@
   template(v-if='item.key')
     span(:class='"depth-"+item.depth') {{ item.key }}
     | :&nbsp;
-  span(:class='item.value') {{ item.value }}
+  span(:class='item.type') {{ item.value }}
 
 </template>
 
