@@ -16,10 +16,15 @@ section.j-container
             el-radio(label='space') Space
         el-form-item(label='Number of space' v-if='indent === "space"')
           el-input-number(v-model='space' controls-position='right' size='small' :min='0' :max='10')
+        el-form-item(label='Theme')
+          el-radio-group(v-model='theme')
+            el-radio(label='dark') Dark
+            el-radio(label='light') Light
+
   .j-container__arrow
     i.el-icon-caret-right
   .j-container__col
-    .j-display
+    .j-display(:class='theme')
       .j-display__code(v-if='isValid')
         row(
         v-for='(item, index) in linedData'
@@ -49,7 +54,8 @@ export default {
       input: '',
       indent: 'tab',
       space: 2,
-      icon: 'el-icon-paperclip'
+      icon: 'el-icon-paperclip',
+      theme: 'dark'
     }
   },
   computed: {

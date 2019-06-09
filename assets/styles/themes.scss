@@ -1,0 +1,55 @@
+.j-display {
+  &.dark {
+    background-color: #252323;
+    color: #f5f1ed;
+    .depth {
+      &-1 {
+        color: #fe4a49;
+      }
+
+      &-2 {
+        color: #7fb069;
+      }
+
+      &-3 {
+        color: #009fb7;
+      }
+
+      &-4 {
+        color: #e3b23c;
+      }
+    }
+
+    .number,
+    .boolean {
+      color: #e4572e;
+    }
+  }
+
+  &.light {
+    background-color: #f5f1ed;
+    color: #252323;
+    .depth {
+      &-1 {
+        color: #fe4a49;
+      }
+
+      &-2 {
+        color: #7fb069;
+      }
+
+      &-3 {
+        color: #009fb7;
+      }
+
+      &-4 {
+        color: #e3b23c;
+      }
+    }
+
+    .number,
+    .boolean {
+      color: #e4572e;
+    }
+  }
+}

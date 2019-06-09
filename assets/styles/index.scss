@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Catamaran:200|Overpass+Mono:300&display=swap');
 @import 'variables';
 @import 'reset';
+@import 'themes';
 
 .j-body {
   display: flex;
@@ -80,8 +81,6 @@
   flex-grow: 1;
   border: 1px solid #eee;
   border-radius: 4px;
-  background-color: #252323;
-  color: #f5f1ed;
 
   &__code {
     width: 100%;
@@ -93,29 +92,6 @@
     font-family: $font-monospace;
     white-space: pre-wrap;
     word-break: break-all;
-
-    .depth {
-      &-1 {
-        color: #fe4a49;
-      }
-
-      &-2 {
-        color: #7fb069;
-      }
-
-      &-3 {
-        color: #009fb7;
-      }
-
-      &-4 {
-        color: #e3b23c;
-      }
-    }
-
-    .number,
-    .boolean {
-      color: #e4572e;
-    }
   }
 
   &__hidden {
