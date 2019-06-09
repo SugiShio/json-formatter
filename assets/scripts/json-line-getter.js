@@ -55,6 +55,6 @@ const getType = item => {
   if (typeof item === 'string') return 'string'
   if (Number.isInteger(item)) return 'number'
   if (Array.isArray(item)) return 'array'
-  if (Object.keys(item).length) return 'object'
+  if (Number.isInteger(Object.keys(item).length)) return 'object'
   return 'other'
 }
