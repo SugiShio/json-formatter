@@ -1,8 +1,8 @@
 <template lang="pug">
-div
-  | {{ indent }}
+.j-display__row
+  | {{ indent_ }}
   template(v-if='item.key')
-    span(:class='"depth-"+item.indent') {{ item.key }}
+    span(:class='"depth-"+item.depth') {{ item.key }}
     | :&nbsp;
   span(:class='item.value') {{ item.value }}
 
@@ -12,11 +12,15 @@ div
 export default {
   props: {
     item: Object,
-    required: true
+    indent: [String, Number]
   },
   computed: {
-    indent() {
-      return new Array(this.item.indent).fill('----').join('')
+    indent_() {
+      let block = this.indent
+      if (Number.isInteger(block)) {
+        block = new Array(block).fill(' ').join('')
+      }
+      return new Array(this.item.depth).fill(block).join('')
     }
   }
 }

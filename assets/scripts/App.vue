@@ -21,7 +21,12 @@ section.j-container
   .j-container__col
     .j-display
       .j-display__code(v-if='isValid')
-        row(v-for='(item, index) in formattedData' :key='index' :item='item')
+        row(
+        v-for='(item, index) in linedData'
+        :key='index'
+        :item='item'
+        :indent='indentation'
+        )
       span.j-display__text(v-else-if='input === ""') Result here
       span.j-display__error(v-else) Invalid format
       textarea.j-display__hidden(ref='copyText') {{ formattedData }}
@@ -49,13 +54,8 @@ export default {
   },
   computed: {
     formattedData() {
-      if (!this.input) return
-      try {
-        const json = JSON.parse(this.input)
-        return lineGetter(json)
-      } catch (e) {
-        return false
-      }
+      if (!this.json) return
+      return JSON.stringify(this.json, null, this.indentation)
     },
     indentation() {
       if (this.indent === 'tab') return '\t'
@@ -63,6 +63,19 @@ export default {
     },
     isValid() {
       return this.input && !!this.formattedData
+    },
+    json() {
+      if (!this.input) return
+      try {
+        const json = JSON.parse(this.input)
+        return json
+      } catch (e) {
+        return false
+      }
+    },
+    linedData() {
+      if (!this.json) return
+      return lineGetter(this.json)
     }
   },
   methods: {

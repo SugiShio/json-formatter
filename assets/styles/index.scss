@@ -85,12 +85,12 @@
     width: 100%;
     height: 100%;
     padding: 9px 15px;
+  }
 
-    div {
-      font-family: $font-monospace;
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
+  &__row {
+    font-family: $font-monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 
   &__hidden {

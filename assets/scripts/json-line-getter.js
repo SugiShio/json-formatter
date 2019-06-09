@@ -6,7 +6,7 @@ const getLineArray = (key, value, hasNext, depth = 0) => {
   let data = []
   const type = getType(value)
   if (key) key = '"' + key + '"'
-  let item = { key, indent: depth }
+  let item = { key, depth }
 
   switch (type) {
     case 'object':
@@ -24,7 +24,7 @@ const getLineArray = (key, value, hasNext, depth = 0) => {
       })
       value = '}'
       if (hasNext) value += ','
-      data.push({ indent: depth, value })
+      data.push({ depth, value })
       break
 
     case 'array':
@@ -37,7 +37,7 @@ const getLineArray = (key, value, hasNext, depth = 0) => {
       })
       value = ']'
       if (hasNext) value += ','
-      data.push({ indent: depth, value })
+      data.push({ depth, value })
       break
 
     case 'string':
