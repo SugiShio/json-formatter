@@ -20,8 +20,8 @@ section.j-container
     i.el-icon-caret-right
   .j-container__col
     .j-display
-      pre(v-if='isValid')
-        code {{ formattedData }}
+      .j-display__code(v-if='isValid')
+        row(v-for='(item, index) in formattedData' :key='index' :item='item')
       span.j-display__text(v-else-if='input === ""') Result here
       span.j-display__error(v-else) Invalid format
       textarea.j-display__hidden(ref='copyText') {{ formattedData }}
@@ -35,7 +35,10 @@ section.j-container
 </template>
 
 <script>
+import lineGetter from './json-line-getter.js'
+import Row from './row.vue'
 export default {
+  components: { Row },
   data() {
     return {
       input: '',
@@ -49,7 +52,7 @@ export default {
       if (!this.input) return
       try {
         const json = JSON.parse(this.input)
-        return JSON.stringify(json, null, this.indentation)
+        return lineGetter(json)
       } catch (e) {
         return false
       }
