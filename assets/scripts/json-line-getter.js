@@ -22,9 +22,7 @@ const getLineArray = (key, value, hasNext, depth = 0) => {
           )
         ]
       })
-      value = '}'
-      if (hasNext) value += ','
-      data.push({ depth, value })
+      data.push({ depth, value: '}', hasNext })
       break
 
     case 'array':
@@ -35,22 +33,16 @@ const getLineArray = (key, value, hasNext, depth = 0) => {
           ...getLineArray(null, v, i + 1 < value.length, depth + 1)
         ]
       })
-      value = ']'
-      if (hasNext) value += ','
-      data.push({ depth, value })
+      data.push({ depth, value: ']', hasNext })
       break
 
     case 'string':
-      value = '"' + value + '"'
-      if (hasNext) value += ','
-      data.push({ ...item, type, value })
+      data.push({ ...item, type, value: '"' + value + '"', hasNext })
       break
 
     case 'boolean':
     case 'number':
-      value = value.toString()
-      if (hasNext) value += ','
-      data.push({ ...item, type, value })
+      data.push({ ...item, type, value: value.toString(), hasNext })
       break
   }
 

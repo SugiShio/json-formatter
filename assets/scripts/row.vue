@@ -5,7 +5,7 @@
     span(:class='"depth-"+item.depth') {{ item.key }}
     | :&nbsp;
   span(:class='item.type') {{ item.value }}
-
+  template(v-if='item.hasNext') ,
 </template>
 
 <script>
