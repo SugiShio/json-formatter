@@ -12,8 +12,8 @@ section.j-container
       el-form(label-width='150px')
         el-form-item(label='Indentation')
           el-radio-group(v-model='indent')
-            el-radio(label='tab') Tab
             el-radio(label='space') Space
+            el-radio(label='tab') Tab
         el-form-item(label='Number of space' v-if='indent === "space"')
           el-input-number(v-model='space' controls-position='right' size='small' :min='0' :max='10')
         el-form-item(label='Theme')
@@ -52,8 +52,8 @@ export default {
   data() {
     return {
       input: '',
-      indent: 'tab',
-      space: 2,
+      indent: 'space',
+      space: 4,
       icon: 'el-icon-paperclip',
       theme: 'dark'
     }
