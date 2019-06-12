@@ -1,24 +1,30 @@
+@mixin depth-colors($c1, $c2, $c3, $c4) {
+  @for $i from 0 through 5 {
+    .depth {
+      &-#{$i*4 + 1} {
+        color: $c1;
+      }
+
+      &-#{$i*4 + 2} {
+        color: $c2;
+      }
+
+      &-#{$i*4 + 3} {
+        color: $c3;
+      }
+
+      &-#{$i*4 + 4} {
+        color: $c4;
+      }
+    }
+  }
+}
+
 .j-display {
   &.dark {
     background-color: #252323;
     color: #f5f1ed;
-    .depth {
-      &-1 {
-        color: #fe4a49;
-      }
-
-      &-2 {
-        color: #7fb069;
-      }
-
-      &-3 {
-        color: #009fb7;
-      }
-
-      &-4 {
-        color: #e3b23c;
-      }
-    }
+    @include depth-colors(#fe4a49, #7fb069, #009fb7, #e3b23c);
 
     .number,
     .null,
@@ -30,23 +36,7 @@
   &.light {
     background-color: #f5f1ed;
     color: #252323;
-    .depth {
-      &-1 {
-        color: #fe4a49;
-      }
-
-      &-2 {
-        color: #7fb069;
-      }
-
-      &-3 {
-        color: #009fb7;
-      }
-
-      &-4 {
-        color: #e3b23c;
-      }
-    }
+    @include depth-colors(#fe4a49, #7fb069, #009fb7, #e3b23c);
 
     .null,
     .number,
