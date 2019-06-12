@@ -44,12 +44,16 @@ const getLineArray = (key, value, hasNext, depth = 0) => {
     case 'number':
       data.push({ ...item, type, value: value.toString(), hasNext })
       break
+
+    case 'null':
+      data.push({ ...item, type, value: 'null', hasNext })
   }
 
   return data
 }
 
 const getType = item => {
+  if (item === null) return 'null'
   if (typeof item === 'boolean') return 'boolean'
   if (!item) return false
   if (typeof item === 'string') return 'string'
