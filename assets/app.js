@@ -1,2 +1,2 @@
-require('./scripts/index.js')
+require('./index.js')
 require('./styles/index.scss')
