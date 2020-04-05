@@ -32,16 +32,20 @@
     <meta name="twitter:site" content="@mimhhs" />
   </head>
   <body class="j-body">
-    <main class="j-main">
-      <h1 class="j-title">Json Formatter</h1>
-      <!-- <div id="json-formatter"></div> -->
-      <div id="json-formatter">
-        <json-input></json-input>
-        <json-modal>
-          <json-option-panel></json-option-panel>
-        </json-modal>
-        <json-output></json-output>
+    <main class="j-main" id="json-formatter">
+      <div class="j-triggers">
+        <div
+          class="j-triggers__item"
+          @click="setModal({ title: 'Setting', contentName: 'optionPanel' })"
+        >
+          <i class="el-icon-setting"></i>
+        </div>
       </div>
+      <json-modal>
+        <component :is="modalContentName"></component>
+      </json-modal>
+      <json-input></json-input>
+      <json-output></json-output>
     </main>
     <footer class="j-footer">
       <small>©︎ 2019, Shoko Sugito</small>

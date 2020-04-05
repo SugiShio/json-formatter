@@ -1,6 +1,8 @@
 <template lang="pug">
 div
-  el-form(label-width='150px')
+  el-form(
+    label-width='130px'
+    label-position='left')
     el-form-item(label='Indentation')
       el-radio-group(
         v-model='indent'

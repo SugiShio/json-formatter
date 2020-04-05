@@ -7,7 +7,7 @@ import {
   Input,
   InputNumber,
   Radio,
-  RadioGroup
+  RadioGroup,
 } from 'element-ui'
 import jsonInput from './components/jsonInput.vue'
 import jsonModal from './components/jsonModal.vue'
@@ -26,12 +26,22 @@ Vue.component(Radio.name, Radio)
 Vue.component(RadioGroup.name, RadioGroup)
 Vue.component('jsonInput', jsonInput)
 Vue.component('jsonModal', jsonModal)
-Vue.component('jsonOptionPanel', jsonOptionPanel)
 Vue.component('jsonOutput', jsonOutput)
+Vue.component('optionPanel', jsonOptionPanel)
 
 window.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: '#json-formatter',
-    store
+    store,
+    computed: {
+      modalContentName() {
+        return store.state.modal.contentName
+      },
+    },
+    methods: {
+      setModal({ title, contentName }) {
+        store.commit('setModal', { title, contentName })
+      },
+    },
   })
 })

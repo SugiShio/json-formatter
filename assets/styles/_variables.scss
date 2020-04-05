@@ -5,6 +5,7 @@
 $color-text: #141415;
 $color-weak: #999;
 $color-error: #dd1c1a;
+$color-border: #eee;
 
 /* font families
 ----------------- */
@@ -23,3 +24,7 @@ $font-lg: 17px;
 ----------------- */
 $breakpoint-sm: 640px;
 $breakpoint-lg: 1000px;
+
+/* z-index
+----------------- */
+$z-index-modal: 1000;

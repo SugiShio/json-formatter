@@ -1,9 +1,10 @@
 <template lang="pug">
-div
   .j-display(:class='theme')
+    .j-copy(
+      v-if='isValidJson'
+      @click='copyData')
+      i.el-icon-document-copy
     .j-display__code(v-if='isValidJson')
-      i.el-icon-document-copy(
-        @click='copyData')
       row(
       v-for='(item, index) in jsonArray'
       :key='index'
@@ -43,10 +44,11 @@ export default {
 <style lang="scss" scoped>
 @import '../styles/variables';
 .j-display {
+  position: relative;
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
   border: 1px solid #eee;
   border-radius: 4px;
 
@@ -82,7 +84,21 @@ export default {
   }
 }
 
-.mt-20 {
-  margin-top: 20px;
+.j-copy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 15px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.3s;
+
+  i {
+    font-size: 18px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 </style>

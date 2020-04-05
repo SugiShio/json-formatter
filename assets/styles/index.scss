@@ -7,16 +7,19 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  max-width: 1200px;
   min-height: 100vh;
-  margin: auto;
+  position: relative;
 }
 
 .j-main {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  padding: 20px;
+  margin: auto;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
 }
 
 .j-footer {
@@ -28,48 +31,30 @@
   }
 }
 
-.j-container {
-  display: flex;
-  flex-grow: 1;
-  margin: -10px;
+.j-triggers {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: $z-index-modal - 1;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 3px rgba(#000, 0.2);
 
-  &__col {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 0;
-    width: calc(50% - 15px);
+  &__item {
     padding: 10px;
-  }
-
-  &__arrow {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 30px;
+    width: 50px;
+    line-height: 30px;
+    cursor: pointer;
     text-align: center;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.6;
+    }
 
     > i {
-      font-size: 32px;
-      color: $color-weak;
+      font-size: 20px;
+      vertical-align: middle;
     }
-  }
-}
-
-.j-title {
-  font-size: 24px;
-  margin: 30px 0;
-  text-align: center;
-}
-
-.j-panel {
-  flex-grow: 1;
-  padding: 9px 15px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-
-  &__title {
-    font-size: $font-lg;
-    margin: 5px 0 10px;
   }
 }
